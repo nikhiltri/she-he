@@ -2,17 +2,19 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+int SHE = 0;
+int HE = 1;
+
 String queries[][] = { {"articles", "date", "copy"}, 
                        {"exhibitions", "aic_start_date", "description"},
                        {"events", "start_date", "description"} };
 
 int year = 2010;
 int month = 1;
+
 List<Coordinate> points;
 
-int SHE = 0;
-int HE = 1;
-
+// Class to store x,y coordinates more easily
 class Coordinate {
   float x, y;
 
@@ -23,7 +25,7 @@ class Coordinate {
 }
 
 void setup() {
-  fullScreen();
+  size(1024, 576);
   frameRate(4);
 
   PFont f = createFont("RobotoMono-Regular.ttf", 18);
@@ -32,6 +34,7 @@ void setup() {
   points = new ArrayList<Coordinate>();
 }
 
+// This method runs once for each month's of data that is displayed
 void draw() {
   if ((year < year() && month <= 12) || (year == year() && month <= month())) {
     background(255);
@@ -99,6 +102,7 @@ void draw() {
         }
       }
 
+      // After ruinning all the queries, display the new points
       for (int i = 0; i < she; i++) {
         addPoint(SHE, she);
       }
@@ -109,6 +113,7 @@ void draw() {
       //    println((month < 10 ? " " : "") + month + "/" + year + " she: " + String.format("%4d", she) + " " + new String(new char[she]).replace('\0', 'x'));
       //    println((month < 10 ? " " : "") + month + "/" + year + "  he: " + String.format("%4d", he) + " " + new String(new char[he]).replace('\0', '-'));
 
+      // Prepare for the next month to display
       month++;
       if (month == 13) {
         month = 1;
@@ -116,6 +121,9 @@ void draw() {
         println();
       }
     }
+
+    // When exporting to a movie, uncomment this to generate frames
+    //saveFrame("frames/shehe-######.png");
   }
 }
 
