@@ -121,9 +121,7 @@ void draw() {
 
 void addPoint(int shehe, int total) {
   float x = random(10+(shehe == SHE ? 0 : width/2), (width/2)+(shehe == SHE ? 0 : width/2)-20);
-
-  int heightMax = constrain(floor(total/25)+1, 2, 4);
-  float y = random(height-((height/4)*heightMax)+20, height-50);
+  float y = random(20, height-50);
 
   points.add(new Coordinate(x, y));
 
