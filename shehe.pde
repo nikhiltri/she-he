@@ -13,6 +13,8 @@ int year = 2010;
 int month = 1;
 
 List<Coordinate> points;
+int sheTotal = 0;
+int heTotal = 0;
 
 // Class to store x,y coordinates more easily
 class Coordinate {
@@ -45,14 +47,18 @@ void draw() {
     text("he", width*.75, height-20);
 
     stroke(0);
-    line(width/2, height/12, width/2, height-(height/12) );
+    line(width/2, 20, width/2, height-20 );
 
     drawAllPoints();
 
     if (year == year() && month == month()) {
       fill(#ff0000);
+      textAlign(RIGHT);
+      text(sheTotal, width/2-20, 20);
+
       textAlign(LEFT);
       text("2010–Present", 20, (height/12)-10);
+      text(heTotal, width/2+20, 20);
     }
     else {
       fill(#ff0000);
@@ -110,8 +116,14 @@ void draw() {
         addPoint(HE, he);
       }
 
-      //    println((month < 10 ? " " : "") + month + "/" + year + " she: " + String.format("%4d", she) + " " + new String(new char[she]).replace('\0', 'x'));
-      //    println((month < 10 ? " " : "") + month + "/" + year + "  he: " + String.format("%4d", he) + " " + new String(new char[he]).replace('\0', '-'));
+      // And show the monthly totals
+      textAlign(RIGHT);
+      text(she, width/2-20, 20);
+      sheTotal += she;
+
+      textAlign(LEFT);
+      text(he, width/2+20, 20);
+      heTotal += he;
 
       // Prepare for the next month to display
       month++;
