@@ -43,8 +43,8 @@ void draw() {
 
     fill(#ff0000);
     textAlign(CENTER);
-    text("she", width*.25, height-20);
-    text("he", width*.75, height-20);
+    text("she", width*.25, 20);
+    text("he", width*.75, 20);
 
     stroke(0);
     line(width/2, 20, width/2, height-20 );
@@ -54,16 +54,18 @@ void draw() {
     if (year == year() && month == month()) {
       fill(#ff0000);
       textAlign(RIGHT);
+      text("2010–" + (month() == 1 ? 12 : month()-1) + "/" + (month() == 1 ? year()-1 : year()), width-20, 20);
+
+      textAlign(RIGHT);
       text(sheTotal, width/2-20, 20);
 
       textAlign(LEFT);
-      text("2010–Present", 20, (height/12)-10);
       text(heTotal, width/2+20, 20);
     }
     else {
       fill(#ff0000);
       textAlign(RIGHT);
-      text(month + "/" + year, 90, (height/12)-10);
+      text(month + "/" + year, width-20, 20);
 
       int she = 0;
       int he = 0;
@@ -141,7 +143,7 @@ void draw() {
 
 void addPoint(int shehe, int total) {
   float x = random(10+(shehe == SHE ? 0 : width/2), (width/2)+(shehe == SHE ? 0 : width/2)-20);
-  float y = random(20, height-50);
+  float y = random(40, height-20);
 
   points.add(new Coordinate(x, y));
 
