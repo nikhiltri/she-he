@@ -96,6 +96,9 @@ void draw() {
               if (str.equals("she")) {
                 she++;
               }
+              if (str.equals("herself")) {
+                she++;
+              }
               if (str.equals("him")) {
                 he++;
               }
@@ -103,6 +106,9 @@ void draw() {
                 he++;
               }
               if (str.equals("he")) {
+                he++;
+              }
+              if (str.equals("himself")) {
                 he++;
               }
             }
