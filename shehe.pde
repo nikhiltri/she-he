@@ -30,7 +30,7 @@ void setup() {
   size(1024, 576);
   frameRate(4);
 
-  PFont f = createFont("RobotoMono-Regular.ttf", 18);
+  PFont f = createFont("RobotoMono-Regular.ttf", 32);
   textFont(f);
 
   points = new ArrayList<Coordinate>();
@@ -43,8 +43,8 @@ void draw() {
 
     fill(#ff0000);
     textAlign(CENTER);
-    text("she", width*.25, 20);
-    text("he", width*.75, 20);
+    text("she", width*.35, 40);
+    text("he", width*.65, 40);
 
     stroke(0);
     line(width/2, 20, width/2, height-20 );
@@ -54,18 +54,18 @@ void draw() {
     if (year == year() && month == month()) {
       fill(#ff0000);
       textAlign(RIGHT);
-      text("2010–" + (month() == 1 ? 12 : month()-1) + "/" + (month() == 1 ? year()-1 : year()), width-20, 20);
+      text("2010–" + (month() == 1 ? 12 : month()-1) + "/" + (month() == 1 ? year()-1 : year()), width-20, 40);
 
       textAlign(RIGHT);
-      text(sheTotal, width/2-20, 20);
+      text(sheTotal, width/2-20, 40);
 
       textAlign(LEFT);
-      text(heTotal, width/2+20, 20);
+      text(heTotal, width/2+20, 40);
     }
     else {
       fill(#ff0000);
       textAlign(RIGHT);
-      text(month + "/" + year, width-20, 20);
+      text(month + "/" + year, width-20, 40);
 
       int she = 0;
       int he = 0;
@@ -126,11 +126,11 @@ void draw() {
 
       // And show the monthly totals
       textAlign(RIGHT);
-      text(she, width/2-20, 20);
+      text(she, width/2-20, 40);
       sheTotal += she;
 
       textAlign(LEFT);
-      text(he, width/2+20, 20);
+      text(he, width/2+20, 40);
       heTotal += he;
 
       // Prepare for the next month to display
@@ -149,7 +149,7 @@ void draw() {
 
 void addPoint(int shehe, int total) {
   float x = random(10+(shehe == SHE ? 0 : width/2), (width/2)+(shehe == SHE ? 0 : width/2)-20);
-  float y = random(40, height-20);
+  float y = random(60, height-20);
 
   points.add(new Coordinate(x, y));
 
